@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product - CRUD SYSTEM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="create-product-page">
+    <header>
+        <h1>Create Product</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Show Products</a>
+        </nav>
+    </header>
+    <main>
+        <form class="product-form">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" name="productName" required>
+            </div>
+            <div class="form-group">
+                <label for="regularPrice">Regular Price</label>
+                <input type="number" id="regularPrice" name="regularPrice" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="submit-btn">Create Product</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 CRUD SYSTEM. All rights reserved.</p>
+    </footer>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module">
+    import { db } from './firebase-config.js';
+    import { collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+
+    const form = document.querySelector('.product-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const product = {
+            name: form.productName.value.trim(),
+            regularPrice: parseFloat(form.regularPrice.value),
+            price: parseFloat(form.price.value),
+            description: form.description.value.trim(),
+            status: form.status.value,
+            createdAt: serverTimestamp()
+        };
+        try {
+            await addDoc(collection(db, 'products'), product);
+            form.reset();
+            alert('Product created successfully!');
+        } catch (err) {
+            alert('Error creating product: ' + err.message);
+        }
+    });
+    </script>
+</body>
+</html>

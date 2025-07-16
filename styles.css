@@ -1,0 +1,287 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    background: #f4f8fb;
+    color: #0a2342;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(90deg, #0a2342 0%, #1976d2 100%);
+    color: #fff;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(10, 35, 66, 0.08);
+}
+
+header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #90caf9;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.08);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background: #0a2342;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+}
+
+/* Homepage Styles */
+.homepage .intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.homepage .intro h2 {
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 1rem;
+}
+
+.homepage .features {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.feature-card {
+    flex: 1;
+    background: #e3f2fd;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.07);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(25, 118, 210, 0.15);
+}
+
+.feature-card h3 {
+    color: #0a2342;
+    margin-bottom: 0.5rem;
+}
+
+/* Create Product Page Styles */
+.create-product-page .product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #e3f2fd;
+    padding: 2rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(25, 118, 210, 0.09);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #0a2342;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 0.7rem 1rem;
+    border: 1.5px solid #1976d2;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    color: #0a2342;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #0a2342;
+}
+
+.submit-btn {
+    background: linear-gradient(90deg, #1976d2 0%, #0a2342 100%);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.09);
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #0a2342 0%, #1976d2 100%);
+    box-shadow: 0 6px 24px rgba(25, 118, 210, 0.18);
+}
+
+/* Products Page Styles */
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Section Title and Intro for Products Page */
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1976d2;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #1976d2 0%, #0a2342 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-intro {
+    text-align: center;
+    color: #0a2342;
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.85;
+    font-style: italic;
+}
+
+/* Enhanced Product Card Animations */
+.product-card {
+    background: linear-gradient(135deg, #e3f2fd 60%, #bbdefb 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(25, 118, 210, 0.13);
+    padding: 1.7rem 1.2rem;
+    width: 270px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+.product-card:hover {
+    transform: translateY(-10px) scale(1.05) rotate(-1deg);
+    box-shadow: 0 12px 36px rgba(25, 118, 210, 0.22);
+    background: linear-gradient(135deg, #bbdefb 60%, #e3f2fd 100%);
+}
+
+.product-card .image-placeholder {
+    font-size: 2.5rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    background: none;
+    color: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add a glowing effect to active status */
+.status.active {
+    background: #1976d2;
+    color: #fff;
+    box-shadow: 0 0 8px #90caf9, 0 0 2px #1976d2;
+    border: 1.5px solid #fff;
+}
+
+.status.inactive {
+    background: #b0bec5;
+    color: #0a2342;
+    border: 1.5px solid #1976d2;
+}
+
+/* Add a subtle hover effect to navigation links */
+nav a {
+    position: relative;
+    z-index: 1;
+}
+nav a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #1976d2 0%, #0a2342 100%);
+    transform: scaleX(0);
+    transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
+    z-index: 0;
+}
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    main {
+        padding: 1rem;
+    }
+    .homepage .features {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .products-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}

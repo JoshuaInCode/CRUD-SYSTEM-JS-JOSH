@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Products - CRUD SYSTEM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="products-page">
+    <header>
+        <h1>Show Products</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="create-product.html">Create Product</a>
+        </nav>
+    </header>
+    <main>
+        <section class="products-section">
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-intro">Explore our latest and most innovative products, designed for the future of technology and neuroscience.</p>
+            <div class="products-list">
+                <div class="product-card">
+                    <h2>NeuroLink Headset</h2>
+                    <p class="price">$299.99</p>
+                    <p class="description">A brain-computer interface headset for seamless mind-machine interaction.</p>
+                    <span class="status active">Active</span>
+                    <div class="image-placeholder">🧠</div>
+                </div>
+                <div class="product-card">
+                    <h2>Quantum Compute Stick</h2>
+                    <p class="price">$499.00</p>
+                    <p class="description">Portable quantum computing power for research and development.</p>
+                    <span class="status active">Active</span>
+                    <div class="image-placeholder">💻</div>
+                </div>
+                <div class="product-card">
+                    <h2>AI Vision Module</h2>
+                    <p class="price">$199.50</p>
+                    <p class="description">Advanced computer vision module for robotics and automation.</p>
+                    <span class="status inactive">Inactive</span>
+                    <div class="image-placeholder">👁️</div>
+                </div>
+                <div class="product-card">
+                    <h2>Synapse Analyzer</h2>
+                    <p class="price">$349.99</p>
+                    <p class="description">Analyze neural activity with real-time data visualization.</p>
+                    <span class="status active">Active</span>
+                    <div class="image-placeholder">🔬</div>
+                </div>
+                <div class="product-card">
+                    <h2>BioSignal Wearable</h2>
+                    <p class="price">$149.00</p>
+                    <p class="description">Wearable device for monitoring biosignals and health metrics.</p>
+                    <span class="status active">Active</span>
+                    <div class="image-placeholder">⌚</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 CRUD SYSTEM. All rights reserved.</p>
+    </footer>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module">
+    import { db } from './firebase-config.js';
+    import { collection, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+
+    const productsList = document.querySelector('.products-list');
+    productsList.innerHTML = '<div style="width:100%;text-align:center;color:#1976d2;">Loading products...</div>';
+
+    const q = query(collection(db, 'products'), orderBy('createdAt', 'desc'));
+    onSnapshot(q, (snapshot) => {
+        if (snapshot.empty) {
+            productsList.innerHTML = '<div style="width:100%;text-align:center;color:#1976d2;">No products found.</div>';
+            return;
+        }
+        productsList.innerHTML = '';
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <h2>${data.name || ''}</h2>
+                <p class="price">$${data.price?.toFixed(2) || '0.00'}</p>
+                <p class="description">${data.description || ''}</p>
+                <span class="status ${data.status === 'active' ? 'active' : 'inactive'}">${data.status ? data.status.charAt(0).toUpperCase() + data.status.slice(1) : ''}</span>
+                <div class="image-placeholder">No Image</div>
+            `;
+            productsList.appendChild(card);
+        });
+    });
+    </script>
+</body>
+</html>
